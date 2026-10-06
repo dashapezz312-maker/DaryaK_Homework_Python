@@ -1,1 +1,2 @@
-# DaryaK_Homework_Python
+## Lesson 1
+Домашняя работа выполнена.
