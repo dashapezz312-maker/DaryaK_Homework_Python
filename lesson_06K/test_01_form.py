@@ -1,0 +1,93 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+def test_form():
+    driver = webdriver.Edge()
+    driver.maximize_window()
+    driver.get(
+        "https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
+    wait = WebDriverWait(driver, 10)
+
+    First_name_input = wait.until(
+        EC.presence_of_element_located((By.NAME, "first-name"))
+    )
+    First_name_input.send_keys("Иван")
+
+    Last_name_input = wait.until(
+        EC.presence_of_element_located(
+            (By.NAME, "last-name")))
+    Last_name_input.send_keys("Петров")
+
+    Address_input = wait.until(
+        EC.presence_of_element_located(
+            (By.NAME, "address")))
+    Address_input.send_keys("Ленина, 55-3")
+
+    Email_input = wait.until(
+        EC.presence_of_element_located(
+            (By.NAME, "e-mail")))
+    Email_input.send_keys("test@skypro.com")
+
+    Phone_number_input = wait.until(
+        EC.presence_of_element_located(
+            (By.NAME, "phone")))
+    Phone_number_input.send_keys("+7985899998787")
+
+    City_input = wait.until(EC.presence_of_element_located((By.NAME, "city")))
+    City_input.send_keys("Москва")
+
+    Country_input = wait.until(
+        EC.presence_of_element_located(
+            (By.NAME, "country")))
+    Country_input.send_keys("Россия")
+
+    Job_position_input = wait.until(
+        EC.presence_of_element_located((By.NAME, "job-position"))
+    )
+    Job_position_input.send_keys("QA")
+
+    Company_input = wait.until(
+        EC.presence_of_element_located(
+            (By.NAME, "company")))
+    Company_input.send_keys("SkyPro")
+
+    submit_button = wait.until(
+        EC.presence_of_element_located(
+            (By.CSS_SELECTOR, "button[type='submit']")))
+    submit_button.click()
+
+    wait.until(EC.url_contains("data-types-submitted.html"))
+
+    Zip_code_input = wait.until(
+        EC.presence_of_element_located(
+            (By.ID, "zip-code")))
+    zip_color = Zip_code_input.value_of_css_property("border-bottom-color")
+
+    assert zip_color == "rgba(245, 194, 199, 1)", (
+        f"Zip code не красный: {zip_color}"
+    )
+
+    green_field_ids = [
+        "first-name",
+        "last-name",
+        "address",
+        "e-mail",
+        "phone",
+        "city",
+        "country",
+        "job-position",
+        "company",
+    ]
+
+    for field_id in green_field_ids:
+        field = driver.find_element(By.ID, field_id)
+        field_color = field.value_of_css_property("border-bottom-color")
+
+        assert (
+            field_color == "rgba(186, 219, 204, 1)"
+        ), f"Поле {field_id} не зеленое: {field_color}"
+
+    driver.quit()
