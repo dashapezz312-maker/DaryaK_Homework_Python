@@ -33,26 +33,26 @@ def test_shop():
     cart_button = driver.find_element(By.CLASS_NAME, "shopping_cart_link")
     cart_button.click()
 
-    Checkout_button = driver.find_element(By.ID, "checkout")
-    Checkout_button.click()
+    checkout_button = driver.find_element(By.ID, "checkout")
+    checkout_button.click()
 
-    First_name_input = wait.until(
+    first_name_input = wait.until(
         EC.presence_of_element_located(
             (By.ID, "first-name")))
-    First_name_input.send_keys("Мария")
+    first_name_input.send_keys("Мария")
 
-    Last_name_input = wait.until(
+    last_name_input = wait.until(
         EC.presence_of_element_located(
             (By.ID, "last-name")))
-    Last_name_input.send_keys("Марьевна")
+    last_name_input.send_keys("Марьевна")
 
-    Postal_code_input = wait.until(
+    postal_code_input = wait.until(
         EC.presence_of_element_located((By.ID, "postal-code"))
     )
-    Postal_code_input.send_keys("123456")
+    postal_code_input.send_keys("123456")
 
-    Continue_button = driver.find_element(By.ID, "continue")
-    Continue_button.click()
+    continue_button = driver.find_element(By.ID, "continue")
+    continue_button.click()
 
     total_element = wait.until(
         EC.presence_of_element_located((By.CLASS_NAME, "summary_total_label"))

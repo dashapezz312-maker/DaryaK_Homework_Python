@@ -11,48 +11,48 @@ def test_form():
         "https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
     wait = WebDriverWait(driver, 10)
 
-    First_name_input = wait.until(
+    first_name_input = wait.until(
         EC.presence_of_element_located((By.NAME, "first-name"))
     )
-    First_name_input.send_keys("Иван")
+    first_name_input.send_keys("Иван")
 
-    Last_name_input = wait.until(
+    last_name_input = wait.until(
         EC.presence_of_element_located(
             (By.NAME, "last-name")))
-    Last_name_input.send_keys("Петров")
+    last_name_input.send_keys("Петров")
 
-    Address_input = wait.until(
+    address_input = wait.until(
         EC.presence_of_element_located(
             (By.NAME, "address")))
-    Address_input.send_keys("Ленина, 55-3")
+    address_input.send_keys("Ленина, 55-3")
 
-    Email_input = wait.until(
+    email_input = wait.until(
         EC.presence_of_element_located(
             (By.NAME, "e-mail")))
-    Email_input.send_keys("test@skypro.com")
+    email_input.send_keys("test@skypro.com")
 
-    Phone_number_input = wait.until(
+    phone_number_input = wait.until(
         EC.presence_of_element_located(
             (By.NAME, "phone")))
-    Phone_number_input.send_keys("+7985899998787")
+    phone_number_input.send_keys("+7985899998787")
 
-    City_input = wait.until(EC.presence_of_element_located((By.NAME, "city")))
-    City_input.send_keys("Москва")
+    city_input = wait.until(EC.presence_of_element_located((By.NAME, "city")))
+    city_input.send_keys("Москва")
 
-    Country_input = wait.until(
+    country_input = wait.until(
         EC.presence_of_element_located(
             (By.NAME, "country")))
-    Country_input.send_keys("Россия")
+    country_input.send_keys("Россия")
 
-    Job_position_input = wait.until(
+    job_position_input = wait.until(
         EC.presence_of_element_located((By.NAME, "job-position"))
     )
-    Job_position_input.send_keys("QA")
+    job_position_input.send_keys("QA")
 
-    Company_input = wait.until(
+    company_input = wait.until(
         EC.presence_of_element_located(
             (By.NAME, "company")))
-    Company_input.send_keys("SkyPro")
+    company_input.send_keys("SkyPro")
 
     submit_button = wait.until(
         EC.presence_of_element_located(
@@ -61,10 +61,10 @@ def test_form():
 
     wait.until(EC.url_contains("data-types-submitted.html"))
 
-    Zip_code_input = wait.until(
+    zip_code_input = wait.until(
         EC.presence_of_element_located(
             (By.ID, "zip-code")))
-    zip_color = Zip_code_input.value_of_css_property("border-bottom-color")
+    zip_color = zip_code_input.value_of_css_property("border-bottom-color")
 
     assert zip_color == "rgba(245, 194, 199, 1)", (
         f"Zip code не красный: {zip_color}"

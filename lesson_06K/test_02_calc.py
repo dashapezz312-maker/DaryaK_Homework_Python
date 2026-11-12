@@ -22,11 +22,11 @@ def test_calc():
 
     wait = WebDriverWait(driver, 10)
 
-    Seconds_input = wait.until(
+    seconds_input = wait.until(
         EC.presence_of_element_located(
             (By.ID, "delay")))
-    Seconds_input.clear()
-    Seconds_input.send_keys("45")
+    seconds_input.clear()
+    seconds_input.send_keys("45")
 
     driver.find_element(By.XPATH, "//span[text()='7']").click()
     driver.find_element(By.XPATH, "//span[text()='+']").click()
